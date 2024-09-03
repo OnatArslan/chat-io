@@ -1,12 +1,21 @@
 const express = require(`express`);
 const path = require(`path`);
-const app = express();
+// Require http for create a server
+const http = require(`http`);
+// Require socketio
+const socketio = require(`socket.io`);
 
-// SET STATIC FOLDER
+const app = express();
+// Create server based on our app
+const server = http.createServer(app);
+// Create socketio instance based on server
+const io = socketio(server);
+// Set static folder route
 app.use(express.static(path.join(__dirname, `public`)));
 
 const PORT = 3000 || process.env.PORT;
 
-app.listen(PORT, () => {
+// Listen server at given PORT
+server.listen(PORT, () => {
   console.log(`Server running on ${PORT}`);
 });
