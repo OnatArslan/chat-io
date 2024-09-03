@@ -15,6 +15,7 @@ app.use(express.static(path.join(__dirname, `public`)));
 
 // Run io when client connects
 io.on(`connection`, (socket) => {
+  console.log("New WebSocket connection");
   // Welcome current user
   socket.emit(`message`, `Welcome to ChatIO`);
 
@@ -24,6 +25,11 @@ io.on(`connection`, (socket) => {
   // Runs when client disconnects
   socket.on(`disconnect`, () => {
     io.emit(`message`, `A user has left the chat`);
+  });
+
+  // Listen for chatMessage
+  socket.on(`chatMessage`, (msg) => {
+    console.log(msg);
   });
 });
 
