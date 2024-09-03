@@ -4,11 +4,14 @@
   "description": "Real time chat app with rooms",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server",
+    "dev": "nodemon server"
   },
   "author": "Onat Arslan",
   "license": "ISC",
   "dependencies": {
+    "chat-io": "file:",
     "express": "^4.19.2",
     "moment": "^2.30.1",
     "socket.io": "^4.7.5"
